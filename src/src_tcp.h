@@ -1,7 +1,7 @@
-#ifndef SOLAR_TCP_LIBRARY_H
-#define SOLAR_TCP_LIBRARY_H
+#ifndef SOLAR_TCP_SRC_TCP_H
+#define SOLAR_TCP_SRC_TCP_H
 
-#include "CRC.h"
+#include "crc/CRC.h"
 #include <cstdint>
 #include <ctime>
 #include <iomanip>
@@ -106,4 +106,4 @@ SolarTcp *createSolarTcp (SolarTcpPacketHeader *header,
  */
 char *SolarTcpRaw (SolarTcp *packet);
 
-#endif // SOLAR_TCP_LIBRARY_H
+#endif // SOLAR_TCP_SRC_TCP_H

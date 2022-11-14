@@ -15,8 +15,8 @@ add_library(solar_tcp_lib STATIC src/src_tcp.cpp src/src_tcp.h src/crc/CRC.h)
 
 add_executable(solar_tcp src/main.cpp)
 
-if(CMAKE_BUILD_TYPE MATCHES Debug)
+if (CMAKE_BUILD_TYPE MATCHES Debug)
     target_link_libraries(solar_tcp solar_tcp_lib)
-else()
+else ()
     target_link_libraries(solar_tcp optimized solar_tcp_lib)
-endif()
+endif ()

@@ -72,7 +72,6 @@ enum PACKET_TYPE
 
 /**
  * @brief Create a SolarTcpPacket struct
- *
  * @param length uint8_t, length of data
  * @param data char*, a char array
  * @param packetType One of the following: INFO, DATA, ACK, RSP, SYN, ERR
@@ -90,8 +89,14 @@ SolarTcpPacket *createPacket (uint8_t length, char *data,
 SolarTcpPacketHeader *createPacketHeader (DEVICES devices);
 
 /**
+ * @brief Convert an ASCII string to a hex string
+ * @param ascii char*, a char array of ASCII characters
+ * @param output char*, a char array to store the output hex string
+ */
+void string2hexString (char *input, char *output);
+
+/**
  * @brief Create a SolarTcp struct
- *
  * @param header SolarTcpPacketHeader*
  * @param packet SolarTcpPacket*
  * @return SolarTcp*

@@ -188,6 +188,10 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 		free(length);
 		free(data);
 		free(crc);
+		free(crcString);
+		free(crcCheckString);
+		free(lengthOfRaw);
+		// Bug: free(type) causes data to be corrupted
 		return solarTcp;
 	}
 }

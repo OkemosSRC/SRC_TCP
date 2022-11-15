@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 
-extern uint16_t count;
 
 /**
  * @brief SolarTcpPacket struct
@@ -26,7 +25,7 @@ struct SolarTcpPacket {
  */
 struct SolarTcpPacketHeader {
 	uint32_t timestamp = time(nullptr);
-	uint16_t sequence = count++;
+	static uint16_t sequence;
 	uint16_t sender = 0;
 	uint16_t receiver = 0;
 };

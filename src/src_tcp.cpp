@@ -1,5 +1,7 @@
 #include "src_tcp.h"
 
+uint16_t SolarTcpPacketHeader::sequence;
+
 SolarTcpPacket *createPacket(uint8_t length, char *data, PACKET_TYPE packetType)
 {
 	auto *packet =

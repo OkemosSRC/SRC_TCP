@@ -101,7 +101,7 @@ char *SolarTcpRaw(SolarTcp *packet)
 
 SolarRcvTcp *RawToSolarTcp(char *raw)
 {
-	char *lengthOfRaw = (char *)malloc(4);
+	char *lengthOfRaw = (char *)malloc(5);
 	memcpy(lengthOfRaw, raw + 24, 4);
 	lengthOfRaw[4] = '\0';
 	int packetLength = (int)strtol(lengthOfRaw, nullptr, 16);
@@ -119,7 +119,7 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 #if VERBOSE
 	printf("CrcCheckString: %s\n", crcCheckString);
 #endif
-	char *crcString = (char *)malloc(8);
+	char *crcString = (char *)malloc(9);
 	memcpy(crcString, raw + rawLength, 8);
 	crcString[8] = '\0';
 	changeCase(crcString, LOWER);
@@ -135,34 +135,34 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 #endif
 		// SOLAR TCP PACKET HEADER
 		auto *header = new SolarTcpPacketRcvHeader{};
-		char *timestamp = (char *)malloc(8);
+		char *timestamp = (char *)malloc(9);
 		memcpy(timestamp, raw, 8);
 		timestamp[8] = '\0';
 		header->timestamp = strtol(timestamp, nullptr, 16);
 
-		char *sequence = (char *)malloc(4);
+		char *sequence = (char *)malloc(5);
 		memcpy(sequence, raw + 8, 4);
 		sequence[4] = '\0';
 		header->sequence = strtol(sequence, nullptr, 16);
 
-		char *sender = (char *)malloc(4);
+		char *sender = (char *)malloc(5);
 		memcpy(sender, raw + 12, 4);
 		sender[4] = '\0';
 		header->sender = strtol(sender, nullptr, 16);
 
-		char *receiver = (char *)malloc(4);
+		char *receiver = (char *)malloc(5);
 		memcpy(receiver, raw + 16, 4);
 		receiver[4] = '\0';
 		header->receiver = strtol(receiver, nullptr, 16);
 
 		// SOLAR TCP PACKET
 		auto *packet = new SolarTcpPacket{};
-		char *type = (char *)malloc(2);
+		char *type = (char *)malloc(3);
 		memcpy(type, raw + 20, 2);
 		type[2] = '\0';
 		packet->type = strtol(type, nullptr, 16);
 
-		char *length = (char *)malloc(4);
+		char *length = (char *)malloc(5);
 		memcpy(length, raw + 24, 4);
 		length[4] = '\0';
 		packet->length = strtol(length, nullptr, 16) / 2;
@@ -173,7 +173,7 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 		std::string thing = hexString2string(data);
 		memcpy(packet->data, (char *)thing.c_str(), packet->length);
 
-		char *crc = (char *)malloc(8);
+		char *crc = (char *)malloc(9);
 		memcpy(crc, raw + rawLength, 8);
 		crc[8] = '\0';
 		packet->crc = strtol(crc, nullptr, 16);

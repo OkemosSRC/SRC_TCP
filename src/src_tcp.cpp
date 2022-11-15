@@ -113,8 +113,9 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 	printf("RawLength: %d\n", rawLength);
 #endif
 	uint32_t crcCheck = CRC::Calculate(raw, rawLength, CRC::CRC_32());
-	char *crcCheckString = (char *)malloc(8);
+	char *crcCheckString = (char *)malloc(9);
 	sprintf(crcCheckString, "%08x", crcCheck);
+	crcCheckString[8] = '\0';
 	changeCase(crcCheckString, LOWER);
 #if VERBOSE
 	printf("CrcCheckString: %s\n", crcCheckString);

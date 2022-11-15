@@ -179,6 +179,15 @@ SolarRcvTcp *RawToSolarTcp(char *raw)
 		packet->crc = strtol(crc, nullptr, 16);
 
 		auto *solarTcp = new SolarRcvTcp{ header, packet };
+		// create new SolarTcp and copy the data into it
+		// fix memory leaks
+		free(timestamp);
+		free(sequence);
+		free(sender);
+		free(receiver);
+		free(length);
+		free(data);
+		free(crc);
 		return solarTcp;
 	}
 }

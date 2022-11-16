@@ -64,7 +64,7 @@ int main()
 		delete solarTcp;
 		delete parsedData;
 		delete rawSolarData;
-		delete packet;
+		free(packet);
 		delete header;
 		SolarTcpPacketHeader::sequence++;
 		std::this_thread::sleep_for(std::chrono::nanoseconds(10));

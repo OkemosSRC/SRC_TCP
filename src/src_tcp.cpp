@@ -39,6 +39,23 @@ void string2hexString(char *input, char *output)
 	}
 }
 
+std::string hexString2string(const char *hex_input)
+{
+	printf("hexString2string: %s", hex_input);
+	std::string output;
+	int i = 0;
+	while (*(hex_input + i) != '\0') {
+		char str[3];
+		str[0] = *(hex_input + i);
+		str[1] = *(hex_input + i + 1);
+		str[2] = '\0';
+		char c = (char)strtol(str, (char **)(str[2]), 16);
+		output.push_back(c);
+		i += 2;
+	}
+	return output;
+}
+
 std::string hexString2string(const std::string &hex_input)
 {
 	std::string ascii_out;

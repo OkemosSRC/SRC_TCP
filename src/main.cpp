@@ -61,10 +61,11 @@ int main()
 		std::cout << "Raw Length: " << strlen(rawSolarData)
 			  << std::endl;
 		std::cout << std::endl;
-		free(solarTcp->packet); // free because we used malloc
 		delete solarTcp;
-		delete parsedData->packet;
-		delete parsedData->header;
+		delete parsedData;
+		delete rawSolarData;
+		free(packet);
+		delete header;
 		SolarTcpPacketHeader::sequence++;
 		std::this_thread::sleep_for(std::chrono::nanoseconds(10));
 		std::this_thread::sleep_until(std::chrono::system_clock::now() +

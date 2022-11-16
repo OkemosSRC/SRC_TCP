@@ -63,7 +63,8 @@ int main()
 		std::cout << std::endl;
 		free(solarTcp->packet); // free because we used malloc
 		delete solarTcp;
-		delete parsedData;
+		delete parsedData->packet;
+		delete parsedData->header;
 		SolarTcpPacketHeader::sequence++;
 		std::this_thread::sleep_for(std::chrono::nanoseconds(10));
 		std::this_thread::sleep_until(std::chrono::system_clock::now() +

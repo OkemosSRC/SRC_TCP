@@ -4,12 +4,11 @@
 
 #include "crc/CRC.h"
 #include <cstdint>
+#include <cstring>
 #include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include <cstring>
-
 
 /**
  * @brief SolarTcpPacket struct

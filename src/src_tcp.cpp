@@ -41,7 +41,9 @@ void string2hexString(char *input, char *output)
 
 std::string hexString2string(const char *hex_input)
 {
-	printf("hexString2string: %s", hex_input);
+#if VERBOSE == 1
+	printf("hexString2string: %s\n", hex_input);
+#endif
 	std::string output;
 	int i = 0;
 	while (*(hex_input + i) != '\0') {
